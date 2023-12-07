@@ -29,6 +29,28 @@
       font-weight: 500;
     }
   }
+  &Tags {
+    background-color: theme(colors.white);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 24px 24px 10px;
+    margin-top: 24px;
+    &Tag {
+      padding: 5px 16px 6px 16px;
+      background-color: theme(colors.zircon);
+      border-radius: 10px;
+      margin-left: 14px;
+      margin-top: 14px;
+      color: theme(colors.royal-blue);
+      cursor: pointer;
+      transition: all 0.3s;
+      &:global(.active), &:hover {
+        color: theme(colors.white);
+        background-color: theme(colors.royal-blue);
+      }
+    }
+  }
 }
 .right {
   flex-grow: 1;

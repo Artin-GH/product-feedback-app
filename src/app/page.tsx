@@ -3,6 +3,7 @@ import Image from "next/image";
 import NavIcon from "public/suggestions/icon-suggestions.svg";
 import ArrowDownIcon from "public/shared/icon-arrow-down.svg";
 import PlusIcon from "public/shared/icon-plus.svg";
+import { cls } from "@/helpers";
 
 export default function Home() {
   return (
@@ -19,6 +20,21 @@ export default function Home() {
               fill
               alt="gradient"
             />
+          </div>
+          <div className={styles.sidebarTags}>
+            {["All", "UI", "UX", "Enhancement", "Bug", "Feature"].map(
+              (item, i) => (
+                <div
+                  className={cls(
+                    styles.sidebarTagsTag,
+                    i === 0 ? "active" : null
+                  )}
+                  key={i}
+                >
+                  {item}
+                </div>
+              )
+            )}
           </div>
         </aside>
         <div className={styles.right}>
