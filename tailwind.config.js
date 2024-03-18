@@ -12,16 +12,12 @@ module.exports = {
         tablet: "640px",
         desktop: "1025px",
       },
-      container: {
-        center: true,
-        padding: '1rem',
-      },
       colors: {
         "electro-violet": "#AD1FEA",
         "royal-blue": "#4661E6",
         rhino: "#373F68",
         white: "#FFFFFF",
-        zircon: "#F2F4FF",
+        zircon: "#F2F4FE",
         "link-water": "#F7F8FD",
         "east-bay": "#3A4374",
         lynch: "#647196",
@@ -110,7 +106,11 @@ module.exports = {
           lineHeight: 1.47,
           fontSize: 14,
           fontWeight: 400,
+          overflowX: 'hidden',
         },
+        "#root": {
+          overflowX: 'hidden',
+        }
       });
 
       const custom = { heading: theme("heading"), body: theme("body") };
@@ -120,8 +120,12 @@ module.exports = {
         Object.keys(custom[key]).forEach((size) => {
           const cls = `.${key}-${size}`;
           const clsContent = custom[key][size];
-          utilities[cls] = clsContent.mobile;
-          utilities = { [cls]: clsContent.mobile, ...utilities };
+          utilities = {
+            [cls]: clsContent.mobile,
+            [cls + "-mobile"]: clsContent.mobile,
+            [cls + "-tablet"]: {...clsContent.mobile, ...clsContent.tablet},
+            ...utilities,
+          };
           utilities[tabletKey][cls] = clsContent.tablet;
         });
       });
@@ -134,7 +138,7 @@ module.exports = {
         buttonColorClses[`.btn-${key}`] = {
           backgroundColor: colorHex,
           '&:hover': {
-            backgroundColor: colorHex + 'CE',
+            backgroundColor: `color(${colorHex} lightness(60%))`,
           }
         };
       })

@@ -1,0 +1,138 @@
+.feedbackCon {
+  margin-bottom: 60px;
+  padding: 0 24px;
+}
+.row {
+  display: flex;
+  max-width: 1110px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+.right {
+  flex-grow: 1;
+}
+.header {
+  height: 72px;
+  background-color: theme(colors.rhino);
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  margin-bottom: 24px;
+  &Icon, &Title {
+    display: none;
+  }
+  &Title {
+    margin-left: 16px;
+    margin-right: 38px;
+    color: theme(colors.white);
+  }
+  &AddBtn {
+    margin-left: auto;
+    margin-right: 24px;
+    width: 134px;
+  }
+}
+.headerSort {
+  color: theme(colors.zircon);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  &Left {
+    font-weight: 400;
+  }
+  &Right {
+    display: flex;
+    align-items: center;
+  }
+  &Bold {
+    letter-spacing: 0 !important;
+    margin-right: 8px;
+  }
+  &Con {
+    position: relative;
+  }
+  &DropMenu {
+    position: absolute;
+    display: none;
+    top: 62px;
+    left: 0;
+    color: theme(colors.lynch);
+    flex-direction: column;
+    gap: 1px;
+    background-color: color(theme(colors.east-bay) lightness(93%));
+    box-shadow: 5px 10px 40px -7px color(theme(colors.rhino) alpha(0.3505));
+    border-radius: 10px;
+    overflow: hidden;
+    &Item {
+      width: 255px;
+      padding: 12px 24px;
+      background-color: theme(colors.white);
+      &:hover, &:global(.selected) {
+        color: theme(colors.electro-violet);
+      }
+      &:global(.selected) &Tick {
+        display: block;
+      }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &Tick {
+        display: none;
+      }
+    }
+  }
+  &:focus-within > &Left, &:focus-within > &Right {
+    opacity: 0.75;
+  }
+  &:focus-within &Arrow {
+    transform: rotate(180deg);
+  }
+  &:focus-within &DropMenu {
+    display: flex;
+  }
+  &:focus-within + &DropMenuCloser {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@screen tablet {
+  .row {
+    gap: 40px;
+  }
+  .suggestions {
+    padding: 0 40px;
+    margin-top: 56px;
+  }
+  .header {
+    border-radius: 10px;
+    &Icon, &Title {
+      display: inline;
+    }
+    &AddBtn {
+      width: 158px;
+      margin-right: 16px;
+    }
+  }
+  .headerSort {
+    &Bold {
+      margin-right: 9px;
+    }
+  }
+}
+
+@screen desktop {
+  .suggestions {
+    margin-top: 94px;
+  }
+  .row {
+    flex-direction: row;
+    gap: 30px;
+  }
+}
+ 

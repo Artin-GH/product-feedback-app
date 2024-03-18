@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import "tailwindcss/tailwind.css";
 
-const jost = Jost({ subsets: ["latin"] });
+const jost = Jost({ subsets: ["latin-ext"] });
 
 export const metadata: Metadata = {
   title: "Product Feedback App",

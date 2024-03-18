@@ -1,0 +1,253 @@
+.sidebar {
+  flex-basis: 22.972972972972972%;
+  max-height: 178px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  grid-template-columns: 1fr 2fr;
+  z-index: 1;
+  &, &Content {
+    display: grid;
+    grid-template-rows: 100%;
+  }
+  &Content {
+    grid-template-columns: 1fr 1fr;
+    transform-origin: right center;
+  }
+  &Backdrop {
+    display: none;
+  }
+}
+.gradient {
+  position: relative;
+  width: 100vw;
+  background-color: theme(colors.electro-violet);
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &Content {
+    position: relative;
+    z-index: 2;
+    color: theme(colors.white);
+    padding: 16px 0 15px 24px;
+  }
+  &Desc {
+    opacity: 0.75;
+    font-weight: 500;
+  }
+}
+.hamburger {
+  width: 20px;
+  height: 17px;
+  z-index: 4;
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  &:global(.active) &Line {
+    &:first-child {
+      transform: translateY(7px) rotate(-135deg);
+    }
+    &:nth-child(2) {
+      transform: rotate(-225deg);
+    }
+    &:last-child {
+      transform: translateY(-7px) rotate(135deg);
+    }
+  }
+  &Line {
+    height: 3px;
+    background-color: theme(colors.white);
+    transition: transform 0.6s;
+    transform-origin: center center;
+  }
+}
+.tags, .roadmap {
+  display: none;
+  background-color: theme(colors.white);
+  border-radius: 10px;
+}
+.tags {
+  flex-wrap: wrap;
+  padding: 24px 14px 24px 24px;
+  column-gap: 8px;
+  align-items: center;
+  &Tag {
+    height: max-content;
+    padding: 5px 16px 6px 16px;
+    background-color: theme(colors.zircon);
+    border-radius: 10px;
+    color: theme(colors.royal-blue);
+    cursor: pointer;
+    transition: all 0.3s;
+    &:global(.active), &:hover {
+      color: theme(colors.white);
+      background-color: theme(colors.royal-blue);
+    }
+  }
+}
+.roadmap {
+  padding: 19px 24px 24px 24px;
+  &Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  &View {
+    color: theme(colors.royal-blue);
+    text-decoration: underline;
+    transition: all 0.3s;
+    &:hover {
+      color: color(theme(colors.royal-blue) whiteness(60%));
+    }
+  }
+  &Items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &Item {
+    display: flex;
+    align-items: center;
+    color: theme(colors.lynch);
+    &Circle {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 16px;
+    }
+    &Count {
+      margin-left: auto;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+}
+
+@screen tablet {
+  .sidebar {
+    position: static;
+    &Content {
+      column-gap: 10px;
+      padding-left: 3.333px;
+    }
+  }
+  .gradient {
+    width: unset;
+    align-items: flex-end;
+    position: relative;
+    border-radius: 10px;
+    height: 100%;
+    &Content {
+      padding: 0 0 24px 24px;
+    }
+    &Con {
+      padding-right: 6.667px;
+    }
+  }
+  .hamburger {
+    display: none;
+  }
+  .tags {
+    display: flex;
+  }
+  .roadmap {
+    display: block;
+  }
+}
+
+@screen desktop {
+  .sidebar, .sidebarContent {
+    display: block;
+    max-height: unset;
+  }
+  .gradient {
+    height: 137px;
+    min-width: 245px;
+    &Con {
+      padding-right: 0;
+    }
+  }
+  .tags {
+    margin: 24px 0;
+    row-gap: 14px;
+  }
+}
+
+/* When the hamburger menu is open */
+@media screen and (max-width: theme(screens.tablet)) {
+  .animOnPage {
+    position: sticky;
+    top: 0;
+    left: 0;
+    .roadmap {
+      display: block;
+    }
+    .tags { 
+      display: flex;
+      row-gap: 14px;
+    }
+    .sidebarContent {
+      position: fixed;
+      top: 0;
+      right: 0;
+      max-width: 72.2666666%;
+      height: 100%;
+      row-gap: 24px;
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content max-content;
+      padding: 96px 24px 24px 24px;
+      background-color: theme(colors.link-water);
+    }
+    .sidebarBackdrop {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #00000080;
+    }
+  }
+}
+
+.animEnter {
+  .sidebarBackdrop {
+    opacity: 0;
+  }
+  .sidebarContent {
+    transform: translateX(100%);
+  }
+}
+.animEnterActive {
+  .sidebarBackdrop {
+    transition: opacity 0.6s;
+    opacity: 1;
+  }
+  .sidebarContent {
+    transition: transform 0.6s;
+    transform: none;
+  }
+}
+.animExit {
+  .sidebarBackdrop {
+    opacity: 1;
+  }
+  .sidebarContent {
+    transform: none;
+  }
+}
+.animExitActive {
+  .sidebarBackdrop {
+    transition: opacity 0.6s;
+    opacity: 0;
+  }
+  .sidebarContent {
+    transition: transform 0.6s;
+    transform: translateX(100%);
+  }
+}

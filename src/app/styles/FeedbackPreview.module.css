@@ -1,0 +1,134 @@
+.feedback {
+  padding: 24px;
+  margin-bottom: 16px;
+  background-color: theme(colors.white);
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  &:global(.skeleton) {
+    position: relative;
+    height: 200.5px;
+    background-color: theme(colors.white);
+    overflow: hidden;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 200%;
+      background: linear-gradient(to right, #00000000 0%, color(theme(colors.zircon) shade(3%)) 20%, #00000000 50%, color(theme(colors.zircon) shade(3%)) 80%, #00000000 100%);
+      animation: feedbackSkeletonAnim 0.87s linear infinite;
+    }
+  }
+}
+.feedback:hover .contentTitle {
+  color: theme(colors.royal-blue);
+}
+
+.upvote {
+  display: flex;
+  align-items: center;
+  padding: 6px 13px 7px 16px;
+  border-radius: 10px;
+  background-color: theme(colors.zircon);
+  transition: background-color 0.3s;
+  gap: 10px;
+  margin-right: 40px;
+  &:hover {
+    background-color: color(theme(colors.zircon) lightness(90%));
+  }
+  &:global(.upvoted) {
+    background-color: theme(colors.royal-blue);
+    & > span {
+      color: theme(colors.white) !important;
+    }
+  }
+  &Arrow {
+    color: theme(colors.royal-blue);
+  }
+  &Count {
+    color: theme(colors.east-bay);
+  }
+}
+.content {
+  color: theme(colors.east-bay);
+  flex-grow: 1;
+  order: -1;
+  margin-bottom: 16px;
+  &Desc {
+    color: theme(colors.lynch);
+    margin-top: 9px;
+    margin-bottom: 8px;
+  }
+  &Tag {
+    padding: 5px 16px 6px 16px;
+    border-radius: 10px;
+    background-color: theme(colors.zircon);
+    color: theme(colors.royal-blue);
+    display: inline-block;
+  }
+}
+.comments {
+  margin-left: auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  &Count {
+    font-size: 13px;
+    letter-spacing: -0.18px;
+    font-weight: 700;
+    padding: 0 4px;
+    color: theme(colors.east-bay);
+    &:global(.no-comments) {
+      opacity: 0.4988;
+    }
+  }
+}
+
+@screen tablet {
+  .feedback {
+    padding: 28px 32px;
+    &:global(.skeleton) {
+      height: 152.1px;
+    }
+  }
+  .upvote {
+    padding: 14px 9px 8px 9px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .content {
+    order: unset;
+    margin-bottom: 0;
+    flex-grow: unset;
+    &Desc {
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+  }
+  .comments {
+    gap: 8px;
+    &Count {
+      font-size: 16px;
+      letter-spacing: -0.22px;
+    }
+  }
+}
+
+@screen desktop {
+  .feedback {
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes feedbackSkeletonAnim {
+  from {
+    transform: skew(26deg);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
