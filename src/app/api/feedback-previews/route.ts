@@ -1,6 +1,6 @@
 import dbConnect from "@/dbConnect";
 import Category, { ICategory } from "@/models/category";
-import Feedback, { IFeedback, IFeedbackPreview } from "@/models/feedback";
+import Feedback, { IFeedback, IFeedbackPreviewProps } from "@/models/feedback";
 import { cache } from "react";
 
 export async function GET() {
@@ -11,7 +11,7 @@ export async function GET() {
 const getFeedbackPreviews = cache(async () => {
   await dbConnect();
   const feedbacks = (await Feedback.find({})) as IFeedback[];
-  const feedbackPreviews: IFeedbackPreview[] = [];
+  const feedbackPreviews: IFeedbackPreviewProps[] = [];
   for (const feedback of feedbacks) {
     const categoryName = (
       (await Category.findById(feedback.category)) as ICategory
