@@ -1,20 +1,11 @@
 "use client";
-import { IFeedbackPreviewProps } from "@/models/feedback";
-import styles from "./styles/FeedbackPreview.module.css";
+import { IFeedbackPreview } from "@/models/feedback";
+import styles from "./styles/Feedbacks.module.css";
 import IconArrowUp from "public/shared/icon-arrow-up.svg";
 import IconComments from "public/shared/icon-comments.svg";
-import { useEffect, useState } from "react";
 import { cls } from "@/helpers";
 
-export default function FeedbackPreviews() {
-  const [feedbacks, setFeedbacks] = useState<IFeedbackPreviewProps[] | null>(null);
-  useEffect(() => {
-    fetch("/api/feedback-previews")
-      .then((res) => res.json())
-      .then((feedbacks) => {
-        setFeedbacks(feedbacks);
-      });
-  });
+export default function Feedbacks({feedbacks}: {feedbacks: null | IFeedbackPreview[]}) {
   return (
     <>
       {feedbacks
@@ -28,7 +19,7 @@ export default function FeedbackPreviews() {
   );
 }
 
-const FeedbackPreview: React.FC<{ feedback: IFeedbackPreviewProps }> = ({
+const FeedbackPreview: React.FC<{ feedback: IFeedbackPreview }> = ({
   feedback,
 }) => {
   return (

@@ -7,9 +7,7 @@ import { useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { ICategoryProps } from "@/models/category";
 
-const SideBar: React.FC<{ categories: ICategoryProps[] }> = ({
-  categories,
-}) => {
+const SideBar: React.FC<{categories: ICategoryProps[]}> = (props) => {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const nodeRef = useRef(null);
 
@@ -60,7 +58,7 @@ const SideBar: React.FC<{ categories: ICategoryProps[] }> = ({
           }}
         ></div>
         <div className={styles.sidebarContent}>
-          <Categories categories={categories} />
+          <Categories categories={props.categories} />
           <div className={styles.roadmap}>
             <div className={`${styles.roadmapTop} body-sm`}>
               <h2 className="heading-md-tablet">Roadmap</h2>
@@ -94,17 +92,19 @@ const SideBar: React.FC<{ categories: ICategoryProps[] }> = ({
   );
 };
 
-const Categories: React.FC<{ categories: ICategoryProps[] }> = ({
-  categories,
-}) => {
+const Categories: React.FC<{categories: ICategoryProps[]}> = ({categories}) => {
   return (
     <div className={`${styles.tags} body-sm`}>
       <div className={cls(styles.tagsTag, "active")}>All</div>
-      {categories.map((category, i) => (
-        <div className={cls(styles.tagsTag)} key={i}>
-          {category.name}
-        </div>
-      ))}
+      {categories
+        ? categories.map((category, i) => (
+            <div className={cls(styles.tagsTag)} key={i}>
+              {category.name}
+            </div>
+          ))
+        : [1, 2, 3, 4, 5, 6].map((i) => (
+            <div className={cls(styles.tagsTag, 'skeleton')} key={i}></div>
+          ))}
     </div>
   );
 };

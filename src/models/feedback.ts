@@ -6,7 +6,8 @@ export interface IFeedback extends mongoose.Document {
   category: mongoose.Types.ObjectId;
 }
 
-export interface IFeedbackPreviewProps {
+export interface IFeedbackPreview {
+  id: string;
   title: string;
   details: string;
   categoryName: string;

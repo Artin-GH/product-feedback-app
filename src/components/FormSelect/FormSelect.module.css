@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  &:focus-within {
+    .menu {
+      display: flex;
+    }
+    .arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+.formInput {
+  user-select: none;
+}
+.arrow {
+  position: absolute;
+  right: 16px;
+  color: theme(colors.royal-blue);
+}
+.menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 16px;
+  width: 100%;
+  background-color: color(theme(colors.east-bay) lightness(85%));
+  box-shadow: 0px 10px 40px -7px color(theme(colors.rhino) a(35.05%));
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 1px;
+  color: theme(colors.lynch);
+  overflow: hidden;
+  &Option {
+    height: 47px;
+    display: flex;
+    align-items: center;
+    background-color: theme(colors.white);
+    padding: 12px 24px;
+    cursor: pointer;
+    &:hover, &:global(.active) {
+      color: theme(colors.electro-violet);
+    }
+  }
+}
+
+@screen tablet {
+  .arrow {
+    right: 24px;
+  }
+}

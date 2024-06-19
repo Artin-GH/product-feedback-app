@@ -143,23 +143,90 @@ module.exports = {
         };
       })
       addComponents({
-        ".btn": {
-          height: 40,
+        ".skeleton": {
+          position: "relative",
+          backgroundColor: "theme(colors.white) !important",
+          overflow: "hidden",
+          "&::after": {
+            content: "''",
+            position: "absolute",
+            top: "0",
+            right: "0",
+            height: "100%",
+            width: "200%",
+            background:
+              "linear-gradient(to right, #00000000 0%, color(theme(colors.zircon) shade(3%)) 20%, #00000000 50%, color(theme(colors.zircon) shade(3%)) 80%, #00000000 100%)",
+          },
+        },
+        ".formInput": {
+          display: "block",
+          backgroundColor: theme("colors.link-water"),
+          ...utilities[".body-md"],
+          padding: "14px 16px 15px 16px",
+          width: "100%",
+          borderRadius: 5,
+          transition: "box-shadow 0.2s",
+          "&:focus-within": {
+            boxShadow: "inset 0 0 0 1px theme(colors.royal-blue)",
+            outline: 0,
+          },
+          "textarea&": {
+            padding: "16px 23px",
+            resize: "none",
+          },
+          "select&": {
+            appearance: "none",
+          },
+          "&.error": {
+            boxShadow: "inset 0 0 0 1px #D73737 !important",
+          },
+        },
+        ".btn-noback, .btn": {
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
-          borderRadius: 10,
           fontSize: custom.heading.sm.mobile.fontSize,
           fontWeight: custom.heading.sm.mobile.fontWeight,
-          color: theme('colors.zircon'),
-          cursor: 'pointer',
-          transition: 'background-color 0.3s',
+          cursor: "pointer",
+        },
+        ".btn-noback": {
+          position: "relative",
+          width: "max-content",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            left: 0,
+            top: "100%",
+            width: "100%",
+            height: 1,
+            backgroundColor: "currentColor",
+            transform: "scaleX(0)",
+            transition: "transform 0.3s",
+          },
+          "&:hover::before": {
+            transform: "none",
+          },
+        },
+        ".btn": {
+          height: 40,
+          justifyContent: "center",
+          borderRadius: 10,
+          color: theme("colors.zircon"),
+          transition: "background-color 0.3s",
         },
         ...buttonColorClses,
         "@screen tablet": {
+          ".formInput": {
+            ...utilities["@screen tablet"][".body-md"],
+            padding: "13px 24px",
+            "textarea&": {
+              padding: "16px 25px 16px 24px",
+            },
+          },
+          ".btn, .btn-noback": {
+            fontSize: custom.heading.sm.tablet.fontSize,
+          },
           ".btn": {
             height: 44,
-            fontSize: custom.heading.sm.tablet.fontSize,
           },
         },
       });

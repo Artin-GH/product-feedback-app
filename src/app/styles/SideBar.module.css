@@ -87,6 +87,13 @@
       color: theme(colors.white);
       background-color: theme(colors.royal-blue);
     }
+    &:global(.skeleton) {
+      width: 48px;
+      height: 30px;
+      &::after {
+        animation: tagsSkeletonAnim 0.87s linear infinite;
+      }
+    }
   }
 }
 .roadmap {
@@ -248,6 +255,16 @@
   }
   .sidebarContent {
     transition: transform 0.6s;
+    transform: translateX(100%);
+  }
+}
+
+
+@keyframes tagsSkeletonAnim {
+  from {
+    transform: skew(26deg);
+  }
+  to {
     transform: translateX(100%);
   }
 }

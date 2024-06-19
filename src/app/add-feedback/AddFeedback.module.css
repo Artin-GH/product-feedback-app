@@ -1,0 +1,105 @@
+.main {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.goBack {
+  margin-bottom: 5vh;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  margin-top: -20px;
+  overflow: hidden;
+  text-align: center;
+  &Back {
+    z-index: 1;
+  }
+  &Icon {
+    position: relative;
+    z-index: 2;
+    color: theme(colors.white);
+    font-size: 25px;
+    font-weight: 500;
+  }
+}
+.box {
+  background-color: theme(colors.white);
+  padding: 44px 24px 24px 24px;
+  color: theme(colors.east-bay);
+  border-radius: 10px;
+  position: relative;
+}
+.detailsTextarea {
+  height: 96px;
+}
+.title {
+  margin-bottom: 24px;
+}
+.formField {
+  margin-bottom: 24px;
+  &Label {
+    margin-bottom: 3px;
+  }
+  &Details {
+    margin-bottom: 16px;
+    letter-spacing: unset;
+    font-weight: 400;
+    color: theme(colors.lynch);
+  }
+}
+.btnCon {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+.errorMessage {
+  margin-top: 4px;
+  font-weight: 400;
+  color: #D73737;
+}
+
+@screen tablet {
+  .main {
+    max-width: 588px;
+  }
+  .goBack {
+  }
+  .circle {
+    margin-top: -28px;
+    width: 56px;
+    height: 56px;
+    &Icon {
+      font-size: 35px;
+    }
+  }
+  .box {
+    padding: 52px 42px 40px 42px;
+  }
+  .formField {
+    &Label {
+      margin-bottom: 2px;
+    }
+  }
+  .title {
+    margin-bottom: 40px;
+  }
+  .btnCon {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    :global(.btn) {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+}

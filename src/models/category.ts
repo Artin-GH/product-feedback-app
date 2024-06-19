@@ -5,6 +5,7 @@ export interface ICategory extends mongoose.Document {
 }
 
 export interface ICategoryProps {
+  id: string;
   name: string;
 }
 

@@ -1,0 +1,18 @@
+.goback {
+  color: theme(colors.royal-blue);
+  .arrowLeft {
+    margin-right: 15.67px;
+  }
+  .text {
+    color: theme(colors.lynch);
+  }
+  &:global(.dark) {
+    color: #CDD2EE;
+    .arrowLeft {
+      margin-right: 15.67px;
+    }
+    .text {
+      color: theme(colors.white);
+    }
+  }
+}

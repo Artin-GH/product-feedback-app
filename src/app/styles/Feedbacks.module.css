@@ -7,18 +7,9 @@
   align-items: flex-start;
   flex-wrap: wrap;
   &:global(.skeleton) {
-    position: relative;
-    height: 200.5px;
     background-color: theme(colors.white);
-    overflow: hidden;
+    height: 200.5px;
     &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 200%;
-      background: linear-gradient(to right, #00000000 0%, color(theme(colors.zircon) shade(3%)) 20%, #00000000 50%, color(theme(colors.zircon) shade(3%)) 80%, #00000000 100%);
       animation: feedbackSkeletonAnim 0.87s linear infinite;
     }
   }
