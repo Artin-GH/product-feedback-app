@@ -138,7 +138,7 @@ module.exports = {
         buttonColorClses[`.btn-${key}`] = {
           backgroundColor: colorHex,
           '&:hover': {
-            backgroundColor: `color(${colorHex} lightness(60%))`,
+            backgroundColor: `color(${colorHex} a(65%))`,
           }
         };
       })
