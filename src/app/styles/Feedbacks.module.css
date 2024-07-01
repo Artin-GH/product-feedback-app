@@ -46,6 +46,7 @@
 .content {
   color: theme(colors.east-bay);
   flex-grow: 1;
+  width: 100%;
   order: -1;
   margin-bottom: 16px;
   &Desc {
@@ -82,16 +83,19 @@
 @screen tablet {
   .feedback {
     padding: 28px 32px;
+    flex-wrap: nowrap;
     &:global(.skeleton) {
       height: 152.1px;
     }
   }
   .upvote {
-    padding: 14px 9px 8px 9px;
+    width: 40px;
+    padding: 14px 0 8px 0;
     flex-direction: column;
     gap: 8px;
   }
   .content {
+    width: unset;
     order: unset;
     margin-bottom: 0;
     flex-grow: unset;

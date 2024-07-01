@@ -1,17 +1,17 @@
 import GoBack from "@/components/GoBack";
 import styles from "./AddFeedback.module.css";
 import dbConnect from "@/dbConnect";
-import Category, { ICategory } from "@/models/category";
 import Feedback from "@/models/feedback";
 import Form from "./Form";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { cls } from "@/helpers";
 import Image from "next/image";
+import { getCategories, getCategoryById } from "@/features/categories";
 
 export default async function AddFeedback() {
   await dbConnect();
-  const categories = (await Category.find({})) as ICategory[];
+  const categories = await getCategories();
 
   const create = async (formData: FormData) => {
     "use server";
@@ -23,10 +23,11 @@ export default async function AddFeedback() {
     try {
       await Feedback.create({
         title: title,
-        category: await Category.findById(categoryId),
+        category: await getCategoryById(categoryId),
         details: details,
       });
-    } catch (error) {
+    } catch (err) {
+      console.log(err);
       return;
     }
     revalidatePath("/page");

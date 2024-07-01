@@ -4,9 +4,10 @@ export interface IFeedback extends mongoose.Document {
   title: string;
   details: string;
   category: mongoose.Types.ObjectId;
+  updateStatus: mongoose.Types.ObjectId;
 }
 
-export interface IFeedbackPreview {
+export interface IFeedbackProps {
   id: string;
   title: string;
   details: string;
@@ -29,7 +30,13 @@ const FeedbackSchema = new mongoose.Schema<IFeedback>({
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
-    required: true,
+    required: [true, "The category field is required."],
+  },
+  updateStatus: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "UpdateStatus",
+    required: false,
+    default: new mongoose.Types.ObjectId("6680740bded549b923ec8987"),
   },
 });
 

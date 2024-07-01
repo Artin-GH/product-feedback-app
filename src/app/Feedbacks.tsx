@@ -1,11 +1,12 @@
 "use client";
-import { IFeedbackPreview } from "@/models/feedback";
+import { IFeedbackProps } from "@/models/feedback";
 import styles from "./styles/Feedbacks.module.css";
 import IconArrowUp from "public/shared/icon-arrow-up.svg";
 import IconComments from "public/shared/icon-comments.svg";
 import { cls } from "@/helpers";
+import Link from "next/link";
 
-export default function Feedbacks({feedbacks}: {feedbacks: null | IFeedbackPreview[]}) {
+export default function Feedbacks({feedbacks}: {feedbacks: null | IFeedbackProps[]}) {
   return (
     <>
       {feedbacks
@@ -19,11 +20,11 @@ export default function Feedbacks({feedbacks}: {feedbacks: null | IFeedbackPrevi
   );
 }
 
-const FeedbackPreview: React.FC<{ feedback: IFeedbackPreview }> = ({
+export const FeedbackPreview: React.FC<{ feedback: IFeedbackProps }> = ({
   feedback,
 }) => {
   return (
-    <a className={styles.feedback} href="#">
+    <Link className={styles.feedback} href={`/feedback/${feedback.id}`}>
       <button className={styles.upvote}>
         <span className={styles.upvoteArrow}>
           <IconArrowUp />
@@ -47,6 +48,6 @@ const FeedbackPreview: React.FC<{ feedback: IFeedbackPreview }> = ({
         </span>
         <span className={styles.commentsCount}>{feedback.commentCount}</span>
       </div>
-    </a>
+    </Link>
   );
 };

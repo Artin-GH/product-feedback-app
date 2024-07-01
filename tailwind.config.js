@@ -23,6 +23,7 @@ module.exports = {
         lynch: "#647196",
         tacao: "#F49F85",
         malibu: "#62BCFA",
+        red: "#D73737",
       },
     },
     heading: {
@@ -106,11 +107,11 @@ module.exports = {
           lineHeight: 1.47,
           fontSize: 14,
           fontWeight: 400,
-          overflowX: 'hidden',
+          overflowX: "hidden",
         },
         "#root": {
-          overflowX: 'hidden',
-        }
+          overflowX: "hidden",
+        },
       });
 
       const custom = { heading: theme("heading"), body: theme("body") };
@@ -123,7 +124,7 @@ module.exports = {
           utilities = {
             [cls]: clsContent.mobile,
             [cls + "-mobile"]: clsContent.mobile,
-            [cls + "-tablet"]: {...clsContent.mobile, ...clsContent.tablet},
+            [cls + "-tablet"]: { ...clsContent.mobile, ...clsContent.tablet },
             ...utilities,
           };
           utilities[tabletKey][cls] = clsContent.tablet;
@@ -131,17 +132,17 @@ module.exports = {
       });
       addUtilities(utilities);
 
-      const colors = theme('colors');
+      const colors = theme("colors");
       const buttonColorClses = {};
       Object.keys(colors).forEach((key) => {
         const colorHex = colors[key];
         buttonColorClses[`.btn-${key}`] = {
           backgroundColor: colorHex,
-          '&:hover': {
+          "&:hover": {
             backgroundColor: `color(${colorHex} a(65%))`,
-          }
+          },
         };
-      })
+      });
       addComponents({
         ".skeleton": {
           position: "relative",
@@ -178,7 +179,7 @@ module.exports = {
             appearance: "none",
           },
           "&.error": {
-            boxShadow: "inset 0 0 0 1px #D73737 !important",
+            boxShadow: "inset 0 0 0 1px theme(colors.red) !important",
           },
         },
         ".btn-noback, .btn": {

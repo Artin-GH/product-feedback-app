@@ -6,9 +6,9 @@ import Link from "next/link";
 import IconCheck from "public/shared/icon-check.svg";
 import Feedbacks from "./Feedbacks";
 import styles from "./styles/Index.module.css";
-import { IFeedbackPreview } from "@/models/feedback";
+import { IFeedbackProps } from "@/models/feedback";
 
-const Right: React.FC<{ feedbacks: IFeedbackPreview[] }> = ({ feedbacks }) => {
+const Right: React.FC<{ feedbacks: IFeedbackProps[] }> = ({ feedbacks }) => {
   return (
     <div className={styles.right}>
       <header className={styles.header}>
