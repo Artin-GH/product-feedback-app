@@ -1,0 +1,220 @@
+.container {
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: theme(colors.rhino);
+  padding: 26px 24px;
+  &AddBtn {
+    padding: 16.5px;
+  }
+}
+.title {
+  color: theme(colors.white);
+  margin-top: 3px;
+}
+.main {
+  label {
+    flex-basis: 33.3333333%;
+    height: 60px;
+    display: grid;
+    place-content: center;
+  }
+  input {
+    display: none;
+    &:global(#Planned):checked ~ .togglers label[for=Planned],
+    &:global(#In-Progress):checked ~ .togglers label[for=In-Progress],
+    &:global(#Live):checked ~ .togglers label[for=Live] {
+      color: theme(colors.east-bay);
+      border-bottom: 4px solid var(--status-color);
+    }
+    &:global(#Planned):checked ~ .tabs .tab[aria-label=Planned],
+    &:global(#In-Progress):checked ~ .tabs .tab[aria-label=In-Progress],
+    &:global(#Live):checked ~ .tabs .tab[aria-label=Live] {
+      display: block;
+    }
+  }
+}
+.togglers {
+  display: flex;
+  border-bottom: 1px solid color(#8C92B3 a(25%));
+  color: color(theme(colors.east-bay) a(40%));
+}
+.tab {
+  display: none;
+  padding: 24px;
+  &Heading {
+    letter-spacing: theme(heading.xl.mobile.letterSpacing)px;
+    font-size: theme(heading.xl.mobile.fontSize)px;
+    font-weight: theme(heading.xl.mobile.fontWeight);
+    color: theme(colors.rhino);
+  }
+  &Description {
+    color: theme(colors.lynch);
+    margin-top: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  &Feedback {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 10px;
+    padding: 22px 24px 24px 24px;
+    background-color: theme(colors.white);
+    height: 233px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    &:hover &Title {
+      color: theme(colors.royal-blue);
+    }
+    &Strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background-color: var(--status-color);
+      border-radius: 6px 6px 0 0;
+    }
+    &Tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      &Circle {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--status-color);
+      }
+      &Name {
+        font-size: theme(body.lg.mobile.fontSize)px;
+        font-weight: theme(body.lg.mobile.fontWeight);
+        color: theme(colors.lynch);
+      }
+    }
+    &Title {
+      letter-spacing: theme(heading.md.mobile.letterSpacing)px;
+      font-size: theme(heading.md.mobile.fontSize)px;
+      font-weight: theme(heading.md.mobile.fontWeight);
+      margin-bottom: 9px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+    &Details {
+      &Con {
+        flex-grow: 1;
+      }
+      font-size: theme(body.lg.mobile.fontSize)px;
+      font-weight: theme(body.lg.mobile.fontWeight);
+      color: theme(colors.lynch);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    &Category {
+      margin-bottom: 16px;
+    }
+    &Bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &Comment {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      &Count {
+        width: 18px;
+        text-align: center;
+        font-weight: theme(heading.sm.mobile.fontWeight);
+        font-size: theme(heading.sm.mobile.fontSize)px;
+        letter-spacing: theme(heading.sm.mobile.letterSpacing)px;
+      }
+    }
+  }
+}
+
+@screen tablet {
+  .container {
+    max-width: 1189px;
+    padding: 0 39.5px;
+  }
+  .header {
+    border-radius: 10px;
+    margin-top: 56px;
+    padding: 27px 32px;
+  }
+  .togglers {
+    display: none;
+  }
+  .tabs {
+    display: flex;
+    margin-top: 32px;
+    gap: 10px;
+  }
+  .tab {
+    display: block;
+    flex-basis: 33.33333333%;
+    padding: 0;
+    &Feedback {
+      padding: 23px 20px 24px 20px;
+      height: 251px;
+      &Tag {
+        gap: 16px;
+        margin-bottom: 13px;
+      }
+      &Details {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+      }
+    }
+  }
+}
+
+@screen desktop {
+  .tabs {
+    margin-top: 48px;
+    gap: 30px;
+  }
+  .tab {
+    &Description {
+      font-size: theme(body.lg.tablet.fontSize);
+      margin-bottom: 32px;
+    }
+    &Feedback {
+      padding: 27px 32px 32px 32px;
+      margin-bottom: 24px;
+      height: 272px;
+      &Tag {
+        margin-bottom: 8px;
+        &Name {
+          font-size: theme(body.lg.tablet.fontSize)px;
+        }
+      }
+      &Title {
+        min-height: max-content;
+        font-size: theme(heading.md.tablet.fontSize)px;
+        margin-bottom: 4px;
+      }
+      &Details {
+        font-size: theme(body.lg.tablet.fontSize)px;
+      }
+      :global(.upvote) {
+        height: 40px;
+      }
+    }
+  }
+}

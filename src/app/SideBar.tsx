@@ -60,9 +60,9 @@ const SideBar: React.FC<{categories: ICategoryProps[]}> = (props) => {
         <div className={styles.sidebarContent}>
           <Categories categories={props.categories} />
           <div className={styles.roadmap}>
-            <div className={`${styles.roadmapTop} body-sm`}>
+            <div className={`${styles.roadmapTop} body-xs`}>
               <h2 className="heading-md-tablet">Roadmap</h2>
-              <Link href="#" className={styles.roadmapView}>
+              <Link href="/roadmap" className={styles.roadmapView}>
                 View
               </Link>
             </div>
@@ -94,11 +94,11 @@ const SideBar: React.FC<{categories: ICategoryProps[]}> = (props) => {
 
 const Categories: React.FC<{categories: ICategoryProps[]}> = ({categories}) => {
   return (
-    <div className={`${styles.tags} body-sm`}>
-      <div className={cls(styles.tagsTag, "active")}>All</div>
+    <div className={`${styles.tags} body-xs`}>
+      <div className={cls(styles.tagsTag, "badge", "active")}>All</div>
       {categories
         ? categories.map((category, i) => (
-            <div className={cls(styles.tagsTag)} key={i}>
+            <div className={cls(styles.tagsTag, "badge")} key={i}>
               {category.name}
             </div>
           ))

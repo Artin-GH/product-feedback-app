@@ -6,7 +6,11 @@ import IconComments from "public/shared/icon-comments.svg";
 import { cls } from "@/helpers";
 import Link from "next/link";
 
-export default function Feedbacks({feedbacks}: {feedbacks: null | IFeedbackProps[]}) {
+export default function Feedbacks({
+  feedbacks,
+}: {
+  feedbacks: null | IFeedbackProps[];
+}) {
   return (
     <>
       {feedbacks
@@ -25,11 +29,11 @@ export const FeedbackPreview: React.FC<{ feedback: IFeedbackProps }> = ({
 }) => {
   return (
     <Link className={styles.feedback} href={`/feedback/${feedback.id}`}>
-      <button className={styles.upvote}>
-        <span className={styles.upvoteArrow}>
+      <button className={cls("upvote upvoteResponsive", styles.upvote)}>
+        <span className={cls("upvoteArrow")}>
           <IconArrowUp />
         </span>
-        <span className={`heading-sm-mobile ${styles.upvoteCount}`}>
+        <span className={cls(styles.upvoteCount, "upvoteCount")}>
           {feedback.upvoteCount}
         </span>
       </button>
@@ -38,7 +42,7 @@ export const FeedbackPreview: React.FC<{ feedback: IFeedbackProps }> = ({
           {feedback.title}
         </h1>
         <p className={`body-lg ${styles.contentDesc}`}>{feedback.details}</p>
-        <span className={`body-sm ${styles.contentTag}`}>
+        <span className={`badge ${styles.contentTag}`}>
           {feedback.categoryName}
         </span>
       </div>

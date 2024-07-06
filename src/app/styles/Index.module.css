@@ -29,7 +29,6 @@
   &AddBtn {
     margin-left: auto;
     margin-right: 24px;
-    width: 134px;
   }
 }
 .headerSort {
@@ -115,7 +114,6 @@
       display: inline;
     }
     &AddBtn {
-      width: 158px;
       margin-right: 16px;
     }
   }

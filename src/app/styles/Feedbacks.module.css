@@ -19,29 +19,7 @@
 }
 
 .upvote {
-  display: flex;
-  align-items: center;
-  padding: 6px 13px 7px 16px;
-  border-radius: 10px;
-  background-color: theme(colors.zircon);
-  transition: background-color 0.3s;
-  gap: 10px;
   margin-right: 40px;
-  &:hover {
-    background-color: color(theme(colors.zircon) lightness(90%));
-  }
-  &:global(.upvoted) {
-    background-color: theme(colors.royal-blue);
-    & > span {
-      color: theme(colors.white) !important;
-    }
-  }
-  &Arrow {
-    color: theme(colors.royal-blue);
-  }
-  &Count {
-    color: theme(colors.east-bay);
-  }
 }
 .content {
   color: theme(colors.east-bay);
@@ -55,10 +33,6 @@
     margin-bottom: 8px;
   }
   &Tag {
-    padding: 5px 16px 6px 16px;
-    border-radius: 10px;
-    background-color: theme(colors.zircon);
-    color: theme(colors.royal-blue);
     display: inline-block;
   }
 }
@@ -87,12 +61,6 @@
     &:global(.skeleton) {
       height: 152.1px;
     }
-  }
-  .upvote {
-    width: 40px;
-    padding: 14px 0 8px 0;
-    flex-direction: column;
-    gap: 8px;
   }
   .content {
     width: unset;

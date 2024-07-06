@@ -1,12 +1,12 @@
 "use client";
 import NavIcon from "public/suggestions/icon-suggestions.svg";
 import ArrowDownIcon from "public/shared/icon-arrow-down.svg";
-import PlusIcon from "public/shared/icon-plus.svg";
 import Link from "next/link";
 import IconCheck from "public/shared/icon-check.svg";
 import Feedbacks from "./Feedbacks";
 import styles from "./styles/Index.module.css";
 import { IFeedbackProps } from "@/models/feedback";
+import AddBtn from "@/components/AddBtn";
 
 const Right: React.FC<{ feedbacks: IFeedbackProps[] }> = ({ feedbacks }) => {
   return (
@@ -66,14 +66,7 @@ const Right: React.FC<{ feedbacks: IFeedbackProps[] }> = ({ feedbacks }) => {
           </div>
           <i className={styles.headerSortDropMenuCloser} tabIndex={0}></i>
         </div>
-        <Link
-          href="/add-feedback"
-          className={`btn btn-electro-violet ${styles.headerAddBtn}`}
-        >
-          <PlusIcon />
-          &nbsp;
-          <span>Add Feedback</span>
-        </Link>
+        <AddBtn className={styles.headerAddBtn} />
       </header>
       <main className={styles.feedbackCon}>
         <Feedbacks feedbacks={feedbacks} />

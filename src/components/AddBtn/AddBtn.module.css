@@ -1,0 +1,9 @@
+.addBtn {
+  width: 134px;
+}
+
+@screen tablet {
+  .addBtn {
+    width: 158px;
+  }
+}

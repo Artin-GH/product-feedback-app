@@ -6,6 +6,11 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  purge: {
+    options: {
+      safelist: ["status-Planned", "status-In-Progress", "status-Live"],
+    },
+  },
   theme: {
     extend: {
       screens: {
@@ -94,6 +99,15 @@ module.exports = {
       sm: {
         mobile: {
           fontSize: 13,
+          fontWeight: 400,
+        },
+        tablet: {
+          fontSize: 14,
+        },
+      },
+      xs: {
+        mobile: {
+          fontSize: 13,
           fontWeight: 600,
         },
         tablet: {},
@@ -116,7 +130,18 @@ module.exports = {
 
       const custom = { heading: theme("heading"), body: theme("body") };
       const tabletKey = "@screen tablet";
-      let utilities = { [tabletKey]: {} };
+      let utilities = {
+        ".status-Planned": {
+          "--status-color": theme("colors.tacao"),
+        },
+        ".status-In-Progress": {
+          "--status-color": theme("colors.electro-violet"),
+        },
+        ".status-Live": {
+          "--status-color": theme("colors.malibu"),
+        },
+        [tabletKey]: {},
+      };
       Object.keys(custom).forEach((key) => {
         Object.keys(custom[key]).forEach((size) => {
           const cls = `.${key}-${size}`;
@@ -157,6 +182,43 @@ module.exports = {
             width: "200%",
             background:
               "linear-gradient(to right, #00000000 0%, color(theme(colors.zircon) shade(3%)) 20%, #00000000 50%, color(theme(colors.zircon) shade(3%)) 80%, #00000000 100%)",
+          },
+        },
+        ".badge, .upvote": {
+          height: "max-content",
+          padding: "5.5px 16.5px 5.5px 16.5px",
+          backgroundColor: theme("colors.zircon"),
+          borderRadius: 10,
+          color: theme("colors.royal-blue"),
+          width: "max-content",
+          fontSize: 13,
+          fontWeight: 600,
+        },
+        ".upvote": {
+          fontSize: 13,
+          fontWeight: 700,
+          letterSpacing: theme("heading.sm.mobile.letterSpacing"),
+          display: "flex",
+          alignItems: "center",
+          padding: "6px 13px 7px 16px",
+          transition: "background-color 0.3s",
+          gap: 10,
+          color: theme("colors.rhino"),
+          cursor: "pointer",
+          "&:hover": {
+            backgroundColor: "color(theme(colors.zircon) lightness(90%))",
+          },
+          "&.upvoted": {
+            backgroundColor: theme("colors.royal-blue"),
+            "& > span": {
+              color: "theme(colors.white) !important",
+            },
+          },
+          "&Arrow": {
+            color: theme("colors.royal-blue"),
+          },
+          "&Count": {
+            color: theme("colors.east-bay"),
           },
         },
         ".formInput": {
@@ -216,6 +278,12 @@ module.exports = {
         },
         ...buttonColorClses,
         "@screen tablet": {
+          ".upvoteResponsive": {
+            width: 40,
+            padding: "14px 0 8px 0",
+            flexDirection: "column",
+            gap: 8,
+          },
           ".formInput": {
             ...utilities["@screen tablet"][".body-md"],
             padding: "13px 24px",

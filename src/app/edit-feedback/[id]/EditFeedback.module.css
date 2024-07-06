@@ -37,8 +37,6 @@
   }
   &Details {
     margin-bottom: 16px;
-    letter-spacing: unset;
-    font-weight: 400;
     color: theme(colors.lynch);
   }
 }
@@ -50,7 +48,6 @@
 }
 .errorMessage {
   margin-top: 4px;
-  font-weight: 400;
   color: #D73737;
 }
 

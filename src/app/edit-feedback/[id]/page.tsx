@@ -93,7 +93,7 @@ export default async function EditFeedback({
 
   return (
     <main className={styles.main}>
-      <GoBack href={`/feedback/${feedback.id}`} className={styles.goBack} />
+      <GoBack className={styles.goBack} />
       <div className={styles.box}>
         <div className={styles.circle}>
           <Image src="/shared/icon-edit-feedback.svg" alt="edit" fill />

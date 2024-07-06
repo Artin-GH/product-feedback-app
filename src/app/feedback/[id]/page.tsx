@@ -20,7 +20,7 @@ export default async function Feedback({ params }: { params: { id: string } }) {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <GoBack href="/" />
+        <GoBack />
         <Link
           href={`/edit-feedback/${params.id}`}
           className={cls("btn btn-royal-blue", styles.btnEdit)}

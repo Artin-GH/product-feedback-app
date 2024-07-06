@@ -39,3 +39,16 @@ export const getFeedbackById = cache(async (id: Types.ObjectId | string) => {
     return null;
   }
 });
+
+export const getFeedbacksByUpdateStatus = cache(
+  async (id: Types.ObjectId | string) => {
+    await dbConnect();
+    try {
+      id = new Types.ObjectId(id);
+      return await Feedback.find<IFeedback>({ updateStatus: id });
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+);

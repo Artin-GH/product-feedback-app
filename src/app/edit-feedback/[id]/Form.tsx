@@ -7,6 +7,7 @@ import { cls } from "@/helpers";
 import Link from "next/link";
 import { useState } from "react";
 import { IUpdateStatusProps } from "@/models/updateStatus";
+import { useRouter } from "next/navigation";
 
 const Form: React.FC<{
   categories: ICategoryProps[];
@@ -25,6 +26,7 @@ const Form: React.FC<{
   currentCategoryIndex,
   currentUpdateStatusIndex,
 }) => {
+  const router = useRouter();
   const [title, setTitle] = useState(oldFeedback.title);
   const [details, setDetails] = useState(oldFeedback.details);
   const [isSubmited, setIsSubmitted] = useState(false);
@@ -42,7 +44,7 @@ const Form: React.FC<{
         <label className={cls("heading-sm", styles.formFieldLabel)}>
           Feedback Title
         </label>
-        <p className={cls("heading-sm", styles.formFieldDetails)}>
+        <p className={cls("body-sm", styles.formFieldDetails)}>
           Add a short, descriptive headline
         </p>
         <input
@@ -57,7 +59,7 @@ const Form: React.FC<{
           }}
         />
         {didTitleHitError && (
-          <p className={cls("heading-sm", styles.errorMessage)}>
+          <p className={cls("body-sm", styles.errorMessage)}>
             Can't be empty
           </p>
         )}
@@ -66,7 +68,7 @@ const Form: React.FC<{
         <label className={cls("heading-sm", styles.formFieldLabel)}>
           Category
         </label>
-        <p className={cls("heading-sm", styles.formFieldDetails)}>
+        <p className={cls("body-sm", styles.formFieldDetails)}>
           Choose a category for your feedback
         </p>
         <FormSelect name="category" initialIndex={currentCategoryIndex}>
@@ -80,7 +82,7 @@ const Form: React.FC<{
         <label className={cls("heading-sm", styles.formFieldLabel)}>
           Update Status
         </label>
-        <p className={cls("heading-sm", styles.formFieldDetails)}>
+        <p className={cls("body-sm", styles.formFieldDetails)}>
           Change feedback state
         </p>
         <FormSelect name="updateStatus" initialIndex={currentUpdateStatusIndex}>
@@ -94,7 +96,7 @@ const Form: React.FC<{
         <label className={cls("heading-sm", styles.formFieldLabel)}>
           Feedback Detail
         </label>
-        <p className={cls("heading-sm", styles.formFieldDetails)}>
+        <p className={cls("body-sm", styles.formFieldDetails)}>
           Include any specific comments on what should be improved, added, etc.
         </p>
         <textarea
@@ -111,7 +113,7 @@ const Form: React.FC<{
           }}
         ></textarea>
         {didDetailsHitError && (
-          <p className={cls("heading-sm", styles.errorMessage)}>
+          <p className={cls("body-sm", styles.errorMessage)}>
             Can't be empty
           </p>
         )}
@@ -124,9 +126,9 @@ const Form: React.FC<{
         >
           Delete
         </button>
-        <Link href={`/feedback/${oldFeedback.id}`} className="btn btn-east-bay">
+        <div className="btn btn-east-bay" onClick={router.back}>
           Cancel
-        </Link>
+        </div>
         <button
           type="submit"
           className="btn btn-electro-violet"

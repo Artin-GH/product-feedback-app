@@ -36,7 +36,7 @@ export default async function AddFeedback() {
 
   return (
     <main className={styles.main}>
-      <GoBack href="/" className={styles.goBack} />
+      <GoBack className={styles.goBack} />
       <div className={styles.box}>
         <div className={styles.circle}>
           <Image
